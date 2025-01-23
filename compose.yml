@@ -1,0 +1,18 @@
+services:
+  app: &app
+    image: node:lts-slim
+    working_dir: /app
+    volumes:
+      - ./app:/app:cached
+    command: npm run start
+    ports:
+      - 3000:3000
+    tty: true
+
+  setup:
+    image: busybox
+    depends_on:
+      - setup-node_module
+  setup-node_module:
+    <<: *app
+    command: cp .env.example .env && npm ci
