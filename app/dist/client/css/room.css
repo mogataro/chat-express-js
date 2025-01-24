@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+.room__inner {
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-primary);
+}
+
+.room__header {
+  padding: 20px 10px;
+  background: var(--color-primary-variant);
+  color: var(--color-white);
+}
+
+.room__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.room__header-col {
+  display: flex;
+  align-items: center;
+}
+
+.room__title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.room__number-in-channel {
+  font-size: 1.5rem;
+}
+
+.room__info {
+  display: flex;
+  margin-inline: auto;
+  padding: 0;
+  margin: 0;
+  -moz-column-gap: 5px;
+  column-gap: 5px;
+}
+
+.room__channel,
+.room__name,
+.room__uuid {
+  list-style: none;
+}
+
+.room__message-list {
+  flex-grow: 1;
+  padding: 10px;
+  overflow: hidden;
+  line-height: 135%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.room__footer {
+  background: var(--color-gray);
+  padding: 10px;
+  display: flex;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  .room__input {
+    flex-grow: 1;
+  }
+}

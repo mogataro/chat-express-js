@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'" />
+    <meta name="description" content="チャットルームにログイン" />
+    <title>チャット | ログイン</title>
+    <link rel="stylesheet" href="css/login.css" type="text/css" />
+  </head>
+
+  <body>
+    <div class="login container">
+      <div class="login__inner container__inner">
+        <div class="login__contents">
+          <h1 class="login__title">チャット</h1>
+          <form class="login__form" action="/room" method="GET">
+            <fieldset class="login__fieldset">
+              <legend class="visually-hidden">Login</legend>
+              <div class="login__form-block">
+                <label class="login__form-label" for="name"
+                  >名前(10文字まで)</label
+                >
+                <input
+                  id="name"
+                  class="login__form-input text-form"
+                  type="text"
+                  name="name"
+                  placeholder="名無し"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                  maxlength="10"
+                />
+              </div>
+              <div class="login__form-block">
+                <label class="login__form-label" for="channel"
+                  >チャンネル(必須 最大5桁の数字)</label
+                >
+                <input
+                  id="channel"
+                  class="login__form-input text-form"
+                  type="number"
+                  name="channel"
+                  placeholder="12345"
+                  max="99999"
+                  required
+                />
+              </div>
+              <div class="login__form-button">
+                <button type="submit" class="button">入室</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
