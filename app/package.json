@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "vite-build": "vite build",
-    "build-client": "npm run vite-build",
+    "build-client": "vite build",
     "build-server": "npx tsc",
     "start": "node dist/server/index.js",
     "lint": "eslint --fix .",
