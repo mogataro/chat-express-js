@@ -17,4 +17,4 @@
 
 `docker compose exec app npm run start`
 
-<http://localhost:{PORT}> にアクセス
+<http://localhost> にアクセス
