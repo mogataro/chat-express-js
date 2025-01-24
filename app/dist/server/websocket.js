@@ -3,8 +3,7 @@ import dayjs from 'dayjs';
 import xss from 'xss';
 import dotenv from 'dotenv';
 dotenv.config();
-const port = process.env['VITE_WS_PORT'];
-const wss = new WebSocketServer({ port: Number(port) });
+export const wss = new WebSocketServer({ noServer: true });
 const clients = {};
 // WebSocket接続, ws が接続したクライアント
 wss.on('connection', (ws) => {

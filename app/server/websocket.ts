@@ -4,9 +4,7 @@ import xss from 'xss';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const port = process.env['VITE_WS_PORT'];
-
-const wss = new WebSocketServer({ port: Number(port) });
+export const wss = new WebSocketServer({ noServer: true });
 
 type ClientInfo = {
   ws: WebSocket | null;

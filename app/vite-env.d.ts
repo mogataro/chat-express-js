@@ -2,8 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string;
-  readonly VITE_WS_PORT: string;
   readonly VITE_PORT: string;
+  readonly VITE_WS_PROTOCOL: string
 }
 
 interface ImportMeta {

@@ -4,7 +4,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
-import './websocket.js';
+import { wss } from './websocket.js';
 const PORT = process.env['VITE_PORT'];
 const routers = [
     { name: 'login', path: '/' },
@@ -20,11 +20,9 @@ routers.forEach((router) => {
             .sendFile(__dirname + `/client/html/${router.name}.html`);
     });
 });
-app
-    .listen(PORT, () => {
-    console.log('Server running at PORT: ', PORT);
-})
-    .on('error', (error) => {
-    // エラーの処理
-    throw new Error(error.message);
+const httpServer = app.listen(PORT);
+httpServer.on('upgrade', (req, socket, head) => {
+    wss.handleUpgrade(req, socket, head, (ws) => {
+        wss.emit('connection', ws, req);
+    });
 });

@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-import './websocket.js';
+import { wss } from './websocket.js';
 
 const PORT = process.env['VITE_PORT'];
 const routers = [
@@ -28,11 +28,10 @@ routers.forEach((router) => {
   });
 });
 
-app
-  .listen(PORT, () => {
-    console.log('Server running at PORT: ', PORT);
+const httpServer = app.listen(PORT)
+
+httpServer.on('upgrade', (req, socket, head) => {
+  wss.handleUpgrade(req, socket, head, (ws) => {
+    wss.emit('connection', ws, req)
   })
-  .on('error', (error) => {
-    // エラーの処理
-    throw new Error(error.message);
-  });
+})

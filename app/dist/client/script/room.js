@@ -289,7 +289,7 @@ const dayjs = /* @__PURE__ */ getDefaultExportFromCjs(dayjs_minExports);
 const uri = new URL(window.location.href);
 const wsProtocol = "wss";
 const ws = new WebSocket(
-  `${wsProtocol}://${uri.hostname}:${"8080"}`
+  `${wsProtocol}://${uri.hostname}:${"3000"}`
 );
 let uuid = "";
 let channel = "";
