@@ -4,9 +4,9 @@ services:
     working_dir: /app
     volumes:
       - ./app:/app:cached
-    command: npm run start
     ports:
       - 3000:3000
+      - 8080:8080
     tty: true
 
   setup:

@@ -4,16 +4,16 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "baseUrl": "./",
-    "outDir": "dist/server",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
-    "esModuleInterop": true,
-    "types": ["vite/client"]
-  },
-  "include": ["server", "client", "types"],
-  "exclude": ["client", "types"]
+    "esModuleInterop": true
+  }
+  // "include": ["./**/*"]
+  // "exclude": ["client"]
+  // "include": ["client", "vite.config.ts"]
+  // "include": ["client", "server", "vite.config.ts"]
 }

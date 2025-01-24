@@ -4,7 +4,6 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "baseUrl": "./",
-    "outDir": "dist/server",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -13,7 +12,5 @@
     "noPropertyAccessFromIndexSignature": true,
     "esModuleInterop": true,
     "types": ["vite/client"]
-  },
-  "include": ["server", "client", "types"],
-  "exclude": ["client", "types"]
+  }
 }

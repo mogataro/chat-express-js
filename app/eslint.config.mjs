@@ -21,7 +21,15 @@ export default [
     'prettier'
   ),
   {
-    ignores: ['dist/**/*'],
+    ignores: [
+      'dist/**/*',
+      '**/*.js',
+      '**/*.mjs',
+      '**/*.d.ts',
+      'vite.config.ts',
+      'client/script',
+      'types/**/*',
+    ],
   },
   {
     plugins: {
