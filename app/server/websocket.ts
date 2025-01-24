@@ -1,7 +1,11 @@
 import { WebSocketServer, WebSocket } from 'ws';
-import dayjs, { type Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import xss from 'xss';
 import dotenv from 'dotenv';
+import type {
+  ReceivedMessageJson as SendMessageJson,
+  SendMessageJson as ReceivedMessageJson,
+} from '../types/index.ts';
 dotenv.config();
 
 const wss = new WebSocketServer({ noServer: true });
@@ -12,25 +16,7 @@ type ClientInfo = {
   name: string;
 };
 
-type SendMessageJson = {
-  init: boolean;
-  uuid: string;
-  channel: string;
-  name: string;
-  message: string;
-  type: 'mine' | 'other' | 'info' | 'admin_number-in-channel';
-  time: Dayjs | null;
-};
-
 const clients: { [key: string]: ClientInfo } = {};
-
-type ReceivedMessageJson = {
-  init: boolean;
-  uuid: string;
-  channel: string;
-  name: string;
-  message: string;
-};
 
 // WebSocket接続, ws が接続したクライアント
 wss.on('connection', (ws) => {
@@ -215,4 +201,4 @@ const getRandomId = () => {
     .join('');
 };
 
-export default wss
+export default wss;

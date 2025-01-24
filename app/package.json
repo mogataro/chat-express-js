@@ -6,7 +6,11 @@
     "build-client-dev": "vite build --mode development",
     "build-client": "vite build",
     "build-server": "npx tsc",
+    "build-dev": "npm run build-client-dev && npm run build-server",
+    "build": "npm run build-client && npm run build-server",
     "start": "node dist/server/index.js",
+    "serve-dev": "npm run build-dev && npm run start",
+    "serve": "npm run build && npm run start",
     "lint": "eslint --fix .",
     "format": "npx prettier --write .",
     "fix": "npm run format && npm run lint"

@@ -28,7 +28,7 @@ export default [
       '**/*.d.ts',
       'vite.config.ts',
       'client/script',
-      'types/**/*',
+      'types/*',
     ],
   },
   {

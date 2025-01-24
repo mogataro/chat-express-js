@@ -29,10 +29,12 @@ routers.forEach((router) => {
   });
 });
 
-const httpServer = app.listen(port, () => { console.log('listen', port) })
+const httpServer = app.listen(port, () => {
+  console.log('listen', port);
+});
 
 httpServer.on('upgrade', (req, socket, head) => {
   wss.handleUpgrade(req, socket, head, (ws) => {
-    wss.emit('connection', ws, req)
-  })
-})
+    wss.emit('connection', ws, req);
+  });
+});

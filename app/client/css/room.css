@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+@import url('./reset.css');
+@import url('./common.css');
+@import url('./message.css');
+
 .room__inner {
   overflow-y: hidden;
   display: flex;

@@ -3,8 +3,8 @@
     "target": "esnext",
     "module": "NodeNext",
     "moduleResolution": "nodenext",
-    "baseUrl": "./",
-    "outDir": "dist/server",
+    "baseUrl": "./server",
+    "outDir": "dist",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -14,6 +14,5 @@
     "esModuleInterop": true,
     "types": ["vite/client"]
   },
-  "include": ["server", "client", "types"],
-  "exclude": ["client", "types"]
+  "include": ["server/**/*.ts"]
 }

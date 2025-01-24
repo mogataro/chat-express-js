@@ -25,16 +25,8 @@ const htmlFiles = Object.fromEntries(
   ])
 );
 
-// const serverTsFiles = Object.fromEntries(
-//   globSync('server/**/*.ts').map((file) => [
-//     path.relative('', file.slice(0, file.length - path.extname(file).length)),
-//     fileURLToPath(new URL(file, import.meta.url)),
-//   ])
-// );
-
 const inputObject = { ...cssFiles, ...tsFiles, ...htmlFiles };
 
-// const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   plugins: [nodePolyfills()],
   build: {
@@ -44,8 +36,6 @@ export default defineConfig({
     rollupOptions: {
       input: inputObject,
       output: {
-        // format: 'es',
-        // dir: 'dist'
         entryFileNames: `[name].js`,
         chunkFileNames: `[name].js`,
         assetFileNames: `[name].[ext]`,
