@@ -6,7 +6,7 @@ import type {
 } from '../../types/index.ts';
 
 const uri = new URL(window.location.href);
-const wsProtocol = uri.protocol === 'https' ? 'wss' : 'ws';
+const wsProtocol = import.meta.env['VITE_WS_PROTOCOL']
 const ws = new WebSocket(
   `${wsProtocol}://${uri.hostname}:${import.meta.env['VITE_WS_PORT']}`
 );

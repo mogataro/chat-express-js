@@ -287,7 +287,7 @@ function requireDayjs_min() {
 var dayjs_minExports = requireDayjs_min();
 const dayjs = /* @__PURE__ */ getDefaultExportFromCjs(dayjs_minExports);
 const uri = new URL(window.location.href);
-const wsProtocol = uri.protocol === "https" ? "wss" : "ws";
+const wsProtocol = "wss";
 const ws = new WebSocket(
   `${wsProtocol}://${uri.hostname}:${"8080"}`
 );
