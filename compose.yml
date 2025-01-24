@@ -15,4 +15,4 @@ services:
       - setup-node_module
   setup-node_module:
     <<: *app
-    command: cp .env.example .env && npm ci
+    command: cp .env.example .env.production  && npm ci

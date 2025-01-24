@@ -7,9 +7,10 @@ import type {
 
 const uri = new URL(window.location.href);
 const wsProtocol = import.meta.env['VITE_WS_PROTOCOL']
-const ws = new WebSocket(
+
+const ws = wsProtocol === 'ws' ? new WebSocket(
   `${wsProtocol}://${uri.hostname}:${import.meta.env['VITE_PORT']}`
-);
+) : new WebSocket(`${wsProtocol}://${uri.hostname}`);
 
 let uuid = '';
 let channel = '';

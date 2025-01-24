@@ -288,9 +288,7 @@ var dayjs_minExports = requireDayjs_min();
 const dayjs = /* @__PURE__ */ getDefaultExportFromCjs(dayjs_minExports);
 const uri = new URL(window.location.href);
 const wsProtocol = "wss";
-const ws = new WebSocket(
-  `${wsProtocol}://${uri.hostname}:${"3000"}`
-);
+const ws = new WebSocket(`${wsProtocol}://${uri.hostname}`);
 let uuid = "";
 let channel = "";
 let userName = "";

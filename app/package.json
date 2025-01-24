@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build-client-dev": "vite build --mode development",
     "build-client": "vite build",
     "build-server": "npx tsc",
     "start": "node dist/server/index.js",

@@ -4,7 +4,7 @@ import xss from 'xss';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const wss = new WebSocketServer({ noServer: true });
+const wss = new WebSocketServer({ noServer: true });
 
 type ClientInfo = {
   ws: WebSocket | null;
@@ -214,3 +214,5 @@ const getRandomId = () => {
     .map(() => strings[Math.floor(Math.random() * strings.length)])
     .join('');
 };
+
+export default wss
