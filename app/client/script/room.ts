@@ -2,8 +2,7 @@ import dayjs from 'dayjs';
 import type { MessageType, MessageJson } from '../../types/index.ts';
 
 const uri = new URL(window.location.href);
-const wsProtocol = uri.protocol === 'https' ? 'wss' : 'ws';
-
+const wsProtocol = uri.protocol === 'https:' ? 'wss' : 'ws';
 const ws = new WebSocket(`${wsProtocol}://${uri.hostname}`);
 
 let uuid = '';
