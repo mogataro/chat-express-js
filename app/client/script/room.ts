@@ -1,9 +1,5 @@
 import dayjs from 'dayjs';
-import type {
-  MessageType,
-  SendMessageJson,
-  ReceivedMessageJson,
-} from '../../types/index.ts';
+import type { MessageType, MessageJson } from '../../types/index.ts';
 
 const uri = new URL(window.location.href);
 const wsProtocol = import.meta.env['VITE_WS_PROTOCOL'];
@@ -23,7 +19,7 @@ let userName = '';
  * メッセージ受信処理
  */
 const onMessage = (event: MessageEvent) => {
-  const json: ReceivedMessageJson = JSON.parse(event.data);
+  const json: MessageJson = JSON.parse(event.data);
   if (json?.init === true) {
     uuid = json.uuid;
 
@@ -56,12 +52,14 @@ const onMessage = (event: MessageEvent) => {
  * 初回コネクト時に実行する
  */
 const sendInitMessage = () => {
-  const messageJson: SendMessageJson = {
+  const messageJson: MessageJson = {
     init: true,
     uuid,
     channel,
     name: userName,
     message: '',
+    type: 'info',
+    time: null,
   };
   ws.send(JSON.stringify(messageJson));
 };
@@ -74,12 +72,14 @@ const sendMessage = () => {
     'messageInput'
   ) as HTMLInputElement | null;
   if (messageInputEl === null) return;
-  const messageJson: SendMessageJson = {
+  const messageJson: MessageJson = {
     init: false,
     uuid,
     channel,
     name: userName,
     message: messageInputEl.value,
+    type: 'mine',
+    time: null,
   };
   ws.send(JSON.stringify(messageJson));
   messageInputEl.value = '';
@@ -88,7 +88,7 @@ const sendMessage = () => {
 /**
  * メッセージを表示するHTML要素を返却
  */
-const createMessage = (json: ReceivedMessageJson) => {
+const createMessage = (json: MessageJson) => {
   const messageModifier = getMessageModifier(json.type);
   const messageElement = createDiv(`message ${messageModifier}`);
   const messageInnerElement = createDiv('message__inner');

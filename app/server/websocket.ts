@@ -2,10 +2,7 @@ import { WebSocketServer, WebSocket } from 'ws';
 import dayjs from 'dayjs';
 import xss from 'xss';
 import dotenv from 'dotenv';
-import type {
-  ReceivedMessageJson as SendMessageJson,
-  SendMessageJson as ReceivedMessageJson,
-} from '../types/index.ts';
+import type { MessageJson } from '../types/index.ts';
 dotenv.config();
 
 const wss = new WebSocketServer({ noServer: true });
@@ -41,7 +38,7 @@ wss.on('connection', (ws) => {
 
   // メッセージ受信処理
   ws.on('message', (data: string) => {
-    const json: ReceivedMessageJson = JSON.parse(data);
+    const json: MessageJson = JSON.parse(data);
     json.name =
       typeof json?.name === 'string' ? json.name.substring(0, 10) : '名無し';
     json.channel = json?.channel ? xss(json.channel) : '';
@@ -73,7 +70,7 @@ wss.on('connection', (ws) => {
  * 接続ユーザに対して、ID取得失敗メッセージを送信
  */
 const sendFailedGetIdMessage = (ws: WebSocket) => {
-  const messageJson: SendMessageJson = {
+  const messageJson: MessageJson = {
     init: false,
     uuid: '',
     channel: '',
@@ -90,7 +87,7 @@ const sendFailedGetIdMessage = (ws: WebSocket) => {
  */
 const sendInitMessage = (uuid: string) => {
   if (clients[uuid].ws === null) return;
-  const initSendMessageJson: SendMessageJson = {
+  const initSendMessageJson: MessageJson = {
     init: true,
     uuid,
     channel: '',
@@ -112,7 +109,7 @@ const sendLoginOrLogoutMessage = (uuid: string, mode: 'login' | 'logout') => {
 
   clientsInChannel.forEach((client) => {
     if (client === null || client.readyState !== WebSocket.OPEN) return;
-    const sendMessageJson: SendMessageJson = {
+    const sendMessageJson: MessageJson = {
       init: false,
       uuid: '',
       channel: '',
@@ -129,14 +126,14 @@ const sendLoginOrLogoutMessage = (uuid: string, mode: 'login' | 'logout') => {
  * 引数のチャンネルにいるユーザーに受信したメッセージを送信
  */
 const sendMessageToChannel = (
-  receivedMessageJson: ReceivedMessageJson,
+  receivedMessageJson: MessageJson,
   ws: WebSocket
 ) => {
   const clientsInChannel = getClientsInChannel(receivedMessageJson.channel);
 
   clientsInChannel.forEach((client) => {
     if (client === null || client.readyState !== WebSocket.OPEN) return;
-    const sendMessageJson: SendMessageJson = {
+    const sendMessageJson: MessageJson = {
       ...receivedMessageJson,
       init: false,
       name: receivedMessageJson.name.substring(0, 10),
@@ -162,7 +159,7 @@ const sendNumberInChannelAdminMessage = (
 
   clientsInChannel.forEach((client) => {
     if (client === null || client.readyState !== WebSocket.OPEN) return;
-    const sendMessageJson: SendMessageJson = {
+    const sendMessageJson: MessageJson = {
       init: false,
       uuid: '',
       channel: '',

@@ -2,15 +2,7 @@ import type { Dayjs } from 'dayjs';
 
 export type MessageType = 'mine' | 'other' | 'info' | 'admin_number-in-channel';
 
-export type SendMessageJson = {
-  init: boolean;
-  uuid: string;
-  channel: string;
-  name: string;
-  message: string;
-};
-
-export type ReceivedMessageJson = {
+export type MessageJson = {
   init: boolean;
   uuid: string;
   channel: string;
