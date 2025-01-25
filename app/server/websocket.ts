@@ -1,9 +1,7 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import dayjs from 'dayjs';
 import xss from 'xss';
-import dotenv from 'dotenv';
 import type { MessageJson } from '../types/index.ts';
-dotenv.config();
 
 const wss = new WebSocketServer({ noServer: true });
 
