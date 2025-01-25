@@ -10,17 +10,12 @@
 
 ## build
 
-### 1) client のビルド
-
-- 本番: `docker compose exec app npm run build-client`
-- local: `docker compose exec app npm run build-client-dev`
-
-### 2) server のビルド
-
-`docker compose exec app npm run build-server`
+- 本番: `docker compose exec app npm run build`
+- local: `docker compose exec app npm run build-dev`
 
 ## 画面の表示
 
-`docker compose exec app npm run start`
+- 本番: `docker compose exec app npm run serve`
+- local: `docker compose exec app npm run serve-dev`
 
 <http://localhost> にアクセス
